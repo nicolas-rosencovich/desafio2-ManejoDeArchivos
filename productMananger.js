@@ -70,8 +70,13 @@ console.log(`Hubo un error al momento de GUARDAR el archivo de productos, ${erro
             || !thumbnail || !code || !stock))
             return "todos los parámetoros son requeridos  [title,description,price,thumbnail ,code,stock]"
                 
+            
+            ProductMananger.idProducto = ProductMananger.idProducto + 1;
+            const id = ProductMananger.idProducto; // Usa el ID de ProductMananger en lugar de llamar a #asingarIdProducto
 
-const codeRepetido=  this.#products.some(p => p.code== code);
+
+            
+/* const codeRepetido=  this.#products.some(p => p.code== code);
 
         if( codeRepetido)
          return `El código ${code} ya se encuetra repetido en otro producto`
@@ -79,7 +84,7 @@ const codeRepetido=  this.#products.some(p => p.code== code);
 //Id autoincrementable
 
 ProductMananger.idProducto = ProductMananger.idProducto + 1;
-const id = this.#asingarIdProducto();
+const id = this.#asingarIdProducto(); */
 
 const nuevoProducto = {
             id,
@@ -135,11 +140,11 @@ const nuevoProducto = {
     deleteProduct(id){
 let msg = `El producto con id ${id} NO EXISTE`
 
-        const index = this.#products.findInfex(p=>p.id === id )
+        const index = this.#products.findIndex(p=>p.id === id )
 
         if(index !=  -1){
 
-        this.#products=this.this.#products.filter(p=>p.id !== id)
+        this.#products=this.#products.filter(p=>p.id !== id)
 
         this.#guardarArchivo();
 
